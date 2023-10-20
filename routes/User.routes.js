@@ -39,12 +39,12 @@ userRouter.post("/login", async (req, res) => {
                     const token = jwt.sign({ userID: user._id }, "webledger");
                     res.status(200).send({ "msg": "Login Succesfull", token, name: user.name })
                 } else {
-                    res.status(200).send({ "msg": "Wrong Credentials!!!" })
+                    res.status(400).send({ "msg": "Wrong Credentials!!!" })
                 }
             });
 
         } else {
-            res.status(200).send({ "msg": "Wrong Credentials!!!" })
+            res.status(400).send({ "msg": "Wrong Credentials!!!" })
         }
     } catch (error) {
         res.status(400).send({ "err": err.message })
